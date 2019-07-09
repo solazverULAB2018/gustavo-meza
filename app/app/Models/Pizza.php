@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pizza extends Model
 {
+	protected $fillable = ['tpizza_id', 'size', 'price'];
+
     /**
      * Get the type pizza that owns the pizza.
      */

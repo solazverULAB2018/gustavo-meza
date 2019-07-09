@@ -22,7 +22,7 @@
                             <textarea name="ingredients" class="form-control" id="tpizzaingredients" rows="3">{{(!empty(old('ingredients'))) ? old('ingredients') : $tpizza->ingredients }}</textarea>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
                             <a href="{{route('tpizzas.index')}}" class="btn btn-secondary">Atrás</a>
                         </div>
                     </form>

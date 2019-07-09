@@ -4,17 +4,16 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Tpizza\TpizzaRepository;
-use App\Http\Requests\Tpizza\CreateRequest;
-use App\Http\Requests\Tpizza\EditRequest;
+use App\Repositories\Pizza\PizzaRepository;
+use App\Http\Requests\Pizza\CreateEditRequest;
 
-class TpizzaController extends Controller
+class PizzaController extends Controller
 {
-    protected $tpizzaRepo;
+    protected $pizzaRepo;
 
-    public function __construct(TpizzaRepository $tpizzaRepository)
+    public function __construct(PizzaRepository $pizzaRepository)
     {
-        $this->tpizzaRepo = $tpizzaRepository;
+        $this->pizzaRepo = $pizzaRepository;
     }
 
     /**
@@ -24,8 +23,8 @@ class TpizzaController extends Controller
      */
     public function index()
     {
-        $tpizzas = $this->tpizzaRepo->getAll();
-        return view('backend.tpizzas.index')->with('tpizzas', $tpizzas);
+        $pizzas = $this->pizzaRepo->getAll();
+        return view('backend.pizzas.index')->with('pizzas', $pizzas);
     }
 
     /**
@@ -35,7 +34,7 @@ class TpizzaController extends Controller
      */
     public function create()
     {
-        return view('backend.tpizzas.create');
+        return view('backend.pizzas.create');
     }
 
     /**
@@ -44,16 +43,16 @@ class TpizzaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateRequest $request)
+    public function store(CreateEditRequest $request)
     {
-        $this->tpizzaRepo->create($request->all());
+        $this->pizzaRepo->create($request->all());
 
         session()->flash('message', [
             'alert' => 'success',
-            'text' => 'Tipo de Pizza creada correctamente.'
+            'text' => 'Pizza creada correctamente.'
         ]);
 
-        return redirect()->route('tpizzas.index');
+        return redirect()->route('pizzas.index');
     }
 
     /**
@@ -75,13 +74,13 @@ class TpizzaController extends Controller
      */
     public function edit($id)
     {
-        $tpizza = $this->tpizzaRepo->find($id);
+        $pizza = $this->pizzaRepo->find($id);
 
-        if (is_null($tpizza)) {
-            return redirect()->route('tpizzas.index');
+        if (is_null($pizza)) {
+            return redirect()->route('pizzas.index');
         }
 
-        return view('backend.tpizzas.edit', ['tpizza' => $tpizza]);
+        return view('backend.pizzas.edit', ['pizza' => $pizza]);
     }
 
     /**
@@ -91,22 +90,22 @@ class TpizzaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EditRequest $request, $id)
+    public function update(CreateEditRequest $request, $id)
     {
-        $tpizza = $this->tpizzaRepo->find($id);
+        $pizza = $this->pizzaRepo->find($id);
 
-        if (is_null($tpizza)) {
-            return redirect()->route('tpizzas.index');
+        if (is_null($pizza)) {
+            return redirect()->route('pizzas.index');
         }
 
-        $this->tpizzaRepo->update($tpizza, $request->all());
+        $this->pizzaRepo->update($pizza, $request->all());
 
         session()->flash('message', [
             'alert' => 'success',
-            'text' => 'Tipo de Pizza actualizo.'
+            'text' => 'Pizza actualiza.'
         ]);
 
-        return redirect()->route('tpizzas.index');
+        return redirect()->route('pizzas.index');
     }
 
     /**
@@ -117,14 +116,14 @@ class TpizzaController extends Controller
      */
     public function destroy($id)
     {
-        $tpizza = $this->tpizzaRepo->find($id);
+        $pizza = $this->pizzaRepo->find($id);
 
-        if (is_null($tpizza)) {
-            return redirect()->route('tpizzas.index');
+        if (is_null($pizza)) {
+            return redirect()->route('pizzas.index');
         }
 
-        $this->tpizzaRepo->delete($tpizza);
+        $this->pizzaRepo->delete($pizza);
 
-        return redirect()->route('tpizzas.index');
+        return redirect()->route('pizzas.index');
     }
 }

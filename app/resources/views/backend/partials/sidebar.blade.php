@@ -7,7 +7,7 @@
             <a class="nav-link" href="{{ route('tpizzas.index') }}">Tipos de Pizza</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Pizzas</a>
+            <a class="nav-link" href="{{ route('pizzas.index') }}">Pizzas</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Bebidas</a>
