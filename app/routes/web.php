@@ -12,5 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.home');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['namespace' => 'Backend'], function(){
+	Route::resource('tpizzas', 'TpizzaController');
 });
