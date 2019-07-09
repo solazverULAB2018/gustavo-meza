@@ -21,4 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['namespace' => 'Backend'], function(){
 	Route::resource('tpizzas', 'TpizzaController');
+	Route::resource('pizzas', 'PizzaController');
 });
