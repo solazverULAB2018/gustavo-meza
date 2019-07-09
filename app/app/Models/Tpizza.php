@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tpizza extends Model
 {
+	protected $fillable = ['name', 'ingredients'];
+
     /**
      * Get the pizzas for this type.
      */
