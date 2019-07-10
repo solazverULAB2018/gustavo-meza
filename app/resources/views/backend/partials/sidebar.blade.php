@@ -10,10 +10,10 @@
             <a class="nav-link" href="{{ route('pizzas.index') }}">Pizzas</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Bebidas</a>
+            <a class="nav-link" href="{{ route('drinks.index') }}">Bebidas</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Extras</a>
+            <a class="nav-link" href="{{ route('extras.index') }}">Extras</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Clientes</a>
