@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Pizza;
+namespace App\Http\Requests\Drink;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,8 +24,7 @@ class CreateEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'tpizza_id' => 'required|exists:tpizzas,id',
-            'size' => 'required',
+            'name' => 'required',
             'price' => 'required|numeric'
         ];
     }
