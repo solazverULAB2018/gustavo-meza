@@ -25,8 +25,9 @@ class HomeController extends Controller
     {
         if ($request->user()->type == 1) {
             return view('backend.home');
+
         }
 
-        return view('frontend.home'); 
+        return redirect()->route('front.order');
     }
 }

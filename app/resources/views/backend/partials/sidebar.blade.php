@@ -1,7 +1,7 @@
 <nav class="col-md-2">
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link active" href="#">Pedidos</a>
+            <a class="nav-link active" href="{{ route('back.order') }}">Pedidos</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('tpizzas.index') }}">Tipos de Pizza</a>
