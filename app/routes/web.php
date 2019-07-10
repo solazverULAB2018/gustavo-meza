@@ -11,17 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.home');
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['namespace' => 'Frontend'], function() {
+	Route::get('/', 'FrontOrderController@index')->name('front.order');
+	Route::post('/order/create', 'FrontOrderController@saveOrder')->name('front.save-order');
+	Route::get('/mis-pedidos', 'FrontOrderController@myOrders')->name('front.my-orders');
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['namespace' => 'Backend'], function() {
 	Route::resource('tpizzas', 'TpizzaController');
 	Route::resource('pizzas', 'PizzaController');
 	Route::resource('drinks', 'DrinkController');
 	Route::resource('extras', 'ExtraController');
+	Route::get('/pedidos', 'BackOrderController@index')->name('back.order');
 });
